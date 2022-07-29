@@ -24,7 +24,7 @@ class Solution:
 
         return total
 
-
 sl = Solution()
 
 print(sl.twoCitySchedCost([[259,770],[448,54],[926,667],[184,139],[840,118],[577,469]]))
+
