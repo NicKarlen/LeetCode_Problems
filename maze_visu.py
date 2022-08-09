@@ -4,7 +4,7 @@ from tkinter import ttk
 class Maze:
     def __init__(self, matrix: list[list[int]]) -> None:
         self.matrix = matrix
-        self.window = tk.Tk()
+        self.root = tk.Tk()
         self.colors = {
             0: "lightblue",
             1: "red",
@@ -15,8 +15,8 @@ class Maze:
         self.show()
 
     def setup(self):
-        self.window.title('Maze Visu')
-        self.window.resizable(0, 0)
+        self.root.title('Maze Visu')
+        self.root.resizable(0, 0)
 
 
     def show(self):
@@ -27,9 +27,12 @@ class Maze:
     
 
         # keep the window displaying
-        self.window.mainloop()
+        self.root.after(5000, self.update)
+        self.root.mainloop()
 
-    def update(self, updated_matrix):
+    def update(self):
+        updated_matrix = self.matrix
+        updated_matrix[0][0] = 3
 
         for idx_row, row in enumerate(updated_matrix):
             for idx_col, col in enumerate(updated_matrix[idx_row]):
@@ -37,9 +40,8 @@ class Maze:
 
 
         # update the window displaying
-        self.window.update()
+        self.root.update()
 
 
 mz = Maze([[1,1,1,0],[1,1,0,0],[1,0,1,0]])
 
-mz.update([[3,1,1,0],[3,1,0,0],[1,0,1,0]])
